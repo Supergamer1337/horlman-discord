@@ -40,14 +40,14 @@ client.on('message', message => {
             return message.channel.send('You didn\'t say my name.');
         }
     }
-    
-    const commandChecks = args.splice(0, 2);
+
+    // Remove please or horlman as first argument
+    args.shift();
 
     // Make sure that a command has been issued
-    if(commandChecks[0].toLowerCase() === 'please' && commandChecks[1] != undefined || commandChecks[0].toLowerCase() === 'horlman' && commandChecks[1] != undefined) {
-
+    if(args[0] != undefined) {
         // Make commandName variable
-        const commandName = commandChecks[1].toLowerCase();
+        const commandName = args[0].toLowerCase();
 
         // Check if command exists
         if(!client.commands.has(commandName)) return message.reply('that is not something I can do.');

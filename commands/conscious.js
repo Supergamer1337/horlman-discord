@@ -1,5 +1,5 @@
 // Imports
-const { version } = require('../config.json');
+const { version } = require('../package.json');
 
 module.exports = {
     name: 'conscious',
