@@ -1,0 +1,71 @@
+// Import and create client
+const fs = require('fs');
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const config = require('./config.json');
+
+// Configuration
+client.commands = new Discord.Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for(const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+
+    client.commands.set(command.name, command);
+}
+
+// Print when bot is online to console
+client.on('ready', () => {
+    console.log('Bot online...');
+});
+
+// Commands
+client.on('message', message => {
+    // If sent by bot or does not contain prefix exit
+    if(!message.content.toLowerCase().startsWith('horlman') && !message.content.toLowerCase().startsWith('please') || message.author.bot) return;
+
+    // Check for Horlman or Please
+    if(message.content.toLowerCase().startsWith('horlman')) {
+        // Prepare horlman prefix
+        var args = message.content.slice('horlman'.length + 1).split(' ');
+
+        if (args[0].toLowerCase() !== 'please') {
+            return message.channel.send('You didn\'t say the magic word.');
+        }
+    } else {
+        // Prepare please prefix
+        var args = message.content.slice('please'.length + 1).split(' ');
+
+        if (args[0].toLowerCase() !== 'horlman') {
+            return message.channel.send('You didn\'t say my name.');
+        }
+    }
+    
+    const commandChecks = args.splice(0, 2);
+
+    // Make sure that a command has been issued
+    if(commandChecks[0].toLowerCase() === 'please' && commandChecks[1] != undefined || commandChecks[0].toLowerCase() === 'horlman' && commandChecks[1] != undefined) {
+
+        // Make commandName variable
+        const commandName = commandChecks[1].toLowerCase();
+
+        // Check if command exists
+        if(!client.commands.has(commandName)) return message.reply('that is not something I can do.');
+
+        // Make command variable
+        const command = client.commands.get(commandName);
+
+        // Try and execute command
+        try {
+            command.execute(message, args);
+        } catch (error) {
+            console.log(error);
+            message.reply('something went wrong when I tried that.');
+        }
+    } else {
+        message.reply('you didn\'t tell me to do anything.');
+    }
+});
+
+
+client.login(config.token);
