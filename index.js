@@ -19,7 +19,7 @@ client.on('ready', () => {
     console.log('Bot online...');
 });
 
-// Commands
+// Text Commands
 client.on('message', message => {
     // If sent by bot or does not contain prefix exit
     if(!message.content.toLowerCase().startsWith('horlman') && !message.content.toLowerCase().startsWith('please') || message.author.bot) return;
@@ -54,6 +54,11 @@ client.on('message', message => {
 
         // Make command variable
         const command = client.commands.get(commandName);
+
+        // Check for individual commands
+        if (command.guildOnly && message.channel.type !== 'text') {
+            return message.reply('I can\'t execute that command inside DMs!');
+        }
 
         // Try and execute command
         try {
