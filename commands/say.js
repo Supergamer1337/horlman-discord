@@ -2,6 +2,7 @@ module.exports = {
     name: 'say',
     description: 'You know...',
     aliases: ['very', 'good', 'please'],
+    usage: '[sentence of what to say]',
     execute(message, args) {
         if(args[1] !== 'it') {
             args.shift();

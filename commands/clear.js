@@ -1,6 +1,7 @@
 module.exports = {
     name: 'clear',
     description: 'Clears messages.',
+    usage: '[number]',
     execute(message, args) {
         // Check if user has neccessary permissions.
         if(message.member.permissions.has('MANAGE_MESSAGES') || message.member.permissions.has('ADMINISTRATOR')) {
