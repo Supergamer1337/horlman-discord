@@ -1,6 +1,6 @@
 {
   "name": "horlman-discord",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Joke bot for LSF",
   "main": "index.js",
   "scripts": {
