@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: 'help',
+    aliases: 'commands',
     description: 'Tells you what Horlman can do.',
     execute(message, args) {
         // Construct embed
