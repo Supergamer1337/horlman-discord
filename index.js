@@ -49,11 +49,11 @@ client.on('message', message => {
         // Make commandName variable
         const commandName = args[0].toLowerCase();
 
-        // Check if command exists
-        if(!client.commands.has(commandName)) return message.reply('that is not something I can do.');
-
         // Make command variable
-        const command = client.commands.get(commandName);
+        const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+        // Check if command exists
+        if(!command) return message.reply('that is not something I can do.');
 
         // Check for individual commands
         if (command.guildOnly && message.channel.type !== 'text') {
