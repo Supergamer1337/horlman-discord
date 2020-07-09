@@ -57,7 +57,7 @@ client.on('message', message => {
 
         // Check for individual commands
         if (command.guildOnly && message.channel.type !== 'text') {
-            return message.reply('I can\'t do that in here in private!');
+            return message.reply('I can\'t do that here in private!');
         }
 
         // Try and execute command

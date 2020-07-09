@@ -19,4 +19,5 @@ RUN npm install
 # Copy with appropriate permissions
 COPY --chown=node:node . .
 
+# Run commands
 CMD [ "node", "app.js" ]
