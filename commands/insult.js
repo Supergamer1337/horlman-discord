@@ -1,7 +1,15 @@
+// Insults
+const insults = ['you make Garyan look like me!', 'I’m not angry at you… Just… Disappointed…', 'you are duller than a khajiit high on moon sugar!', 'you are as weak as I am strong!']
+
+// Exported command
 module.exports = {
     name: 'insult',
     description: 'Well, an insult.',
     execute(message, args) {
-        message.reply('do you even drink milk? I thought you didn\'t, at least not with those things you call arms!');
+        if(args[1]) {
+            message.channel.send(args[1]+', '+insults[Math.floor(Math.random() * insults.length)]);
+        } else {
+            message.reply('you couldn\'t even make me insult someone else.');
+        }
     }
 }

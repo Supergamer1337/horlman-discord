@@ -30,7 +30,7 @@ client.on('message', message => {
         var args = message.content.slice('horlman'.length + 1).split(' ');
 
         if (args[0].toLowerCase() !== 'please') {
-            return message.channel.send('You didn\'t say the magic word.');
+            return message.channel.send('Please learn some goddamn manners! (Use please)');
         }
     } else {
         // Prepare please prefix
@@ -72,5 +72,5 @@ client.on('message', message => {
     }
 });
 
-
+// Discord bot login token
 client.login(config.token);

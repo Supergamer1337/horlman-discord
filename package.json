@@ -1,10 +1,10 @@
 {
   "name": "horlman-discord",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "Joke bot for LSF",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index"
+    "dev": "nodemon app"
   },
   "keywords": [
     "bot",

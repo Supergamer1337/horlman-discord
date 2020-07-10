@@ -8,19 +8,21 @@ module.exports = {
             const amount = parseInt(args[1]) + 1;
 
             if(isNaN(amount)) {
-                return message.channel.send('You need to tell me a **NUMBER** of messages to take away!');
-            } else if(amount < 2 || amount > 100) {
-                return message.channel.send('I can only take away 1 to 99 messages!');
+                return message.channel.send('You need to be more specific! RAAAAAAAAH!');
+            } else if(amount > 100) {
+                return message.channel.send('99 tops, dumbass!');
+            } else if (amount < 2) {
+                return message.channel.send('AM I SUPPOSED TO DELETE ZERO MESSAGES?!');
             }
 
             message.channel.bulkDelete(amount)
-                .then(() => message.channel.send(`I have now taken away ${amount - 1} messages.`))
+                .then(() => message.channel.send(`RAAAAAAAAH!… I have successfully obliterated ${amount-1}!`))
                 .catch(err => {
                     console.log(err);
-                    message.channel.send('I was unable to take away these messages.');
+                    message.channel.send('RAAAAAAAAH!… The messages were too strong… I am sorry...');
                 });
         } else {
-            message.reply('you are not allowed to do that.');
+            message.reply('You don’t have the right to boss me around! Tiny man.');
         }
     }
 }
