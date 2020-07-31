@@ -14,7 +14,7 @@ COPY package*.json ./
 USER node
 
 # Run NPM install on package.json
-RUN npm install
+RUN npm install --only=production
 
 # Copy with appropriate permissions
 COPY --chown=node:node . .
