@@ -13,12 +13,12 @@
   "author": "SuperGamer1337",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
-    "discord.js": "^12.2.0",
-    "dotenv": "^8.2.0",
-    "ffmpeg-static": "^4.2.6"
+    "@discordjs/opus": "^0.5.3",
+    "discord.js": "^13.0.1",
+    "dotenv": "^10.0.0",
+    "ffmpeg-static": "^4.4.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.12"
   }
 }
