@@ -69,10 +69,10 @@ client.on('messageCreate', message => {
 			command.execute(message, args, client);
 		} catch (error) {
 			console.log(error);
-			message.reply('something went wrong when I tried that.');
+			message.reply('Something went wrong when I tried that.');
 		}
 	} else {
-		message.reply("you didn't tell me to do anything.");
+		message.reply("You didn't tell me to do anything.");
 	}
 });
 
