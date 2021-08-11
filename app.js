@@ -7,7 +7,8 @@ const client = new Client({
 	intents: [
 		Intents.FLAGS.GUILDS,
 		Intents.FLAGS.GUILD_MESSAGES,
-		Intents.FLAGS.DIRECT_MESSAGES
+		Intents.FLAGS.DIRECT_MESSAGES,
+		Intents.FLAGS.DIRECT_MESSAGE_TYPING
 	]
 });
 
@@ -65,7 +66,7 @@ client.on('messageCreate', message => {
 
 		// Try and execute command
 		try {
-			command.execute(message, args);
+			command.execute(message, args, client);
 		} catch (error) {
 			console.log(error);
 			message.reply('something went wrong when I tried that.');
