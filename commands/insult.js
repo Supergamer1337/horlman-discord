@@ -9,6 +9,7 @@ const insults = [
 // Exported command
 module.exports = {
 	name: 'insult',
+	usage: '[what to insult]',
 	description: 'Well, an insult.',
 	execute(message, args) {
 		if (args[1]) {

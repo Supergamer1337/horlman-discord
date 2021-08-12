@@ -4,7 +4,8 @@
 	"description": "Joke bot for LSF",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon index"
+		"dev": "nodemon index",
+		"build-docker": "sudo docker build -t supergamer1337/horlman-bot ."
 	},
 	"keywords": [
 		"bot",
@@ -15,9 +16,7 @@
 	"dependencies": {
 		"@discordjs/opus": "0.3.3",
 		"discord.js": "12.5.3",
-		"ffmpeg-static": "^4.4.0",
-		"libsodium-wrappers": "^0.7.9",
-		"sodium": "^3.0.2"
+		"ffmpeg-static": "^4.4.0"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.12"

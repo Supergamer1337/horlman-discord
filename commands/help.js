@@ -17,17 +17,9 @@ module.exports = {
 				.setTitle('Horlman Commands')
 				.addFields(
 					commands.map(command => {
-						// Required, as it otherwise doesn't send usage correctly.
-
-						if (command.usage) {
-							var usage = `Usage: ${command.usage}\n`;
-						}
-
 						return {
 							name: command.name,
-							value: `${usage ? usage : ''}Description: ${
-								command.description
-							}`
+							value: `Description: ${command.description}`
 						};
 					})
 				);

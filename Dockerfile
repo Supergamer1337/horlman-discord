@@ -10,11 +10,14 @@ WORKDIR /home/node/app
 # Copy files
 COPY package*.json ./
 
-# Set user
-USER node
+# Install pnpm
+RUN npm -g install pnpm
 
 # Run NPM install on package.json
 RUN pnpm install --only=production
+
+# Set user
+USER node
 
 # Copy with appropriate permissions
 COPY --chown=node:node . .
