@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "nodemon index",
-		"build-docker": "sudo docker build -t supergamer1337/horlman-bot ."
+		"build-docker": "docker build -t supergamer1337/horlman-bot ."
 	},
 	"keywords": [
 		"bot",
