@@ -10,11 +10,10 @@ module.exports = {
 	usage: '[command name]',
 	description: 'Tells you what Horlman can do.',
 	execute(message, args) {
-		const data = [];
 		const { commands } = message.client;
 
 		if (args.length < 2) {
-			const messageEmbed = new MessageEmbed()
+			const messageEmbed = new MessageEmbed({})
 				.setTitle('Horlman Commands')
 				.addFields(
 					commands.map(command => {
@@ -34,7 +33,7 @@ module.exports = {
 				);
 
 			return message.author
-				.send({ embeds: [messageEmbed] })
+				.send(messageEmbed)
 				.then(() => {
 					if (message.channel.type === 'dm') return;
 					message.reply("I've told you in private what I can do!");
@@ -72,6 +71,20 @@ module.exports = {
 			.setTitle(command.name.toUpperCase())
 			.addFields(fields);
 
-		message.channel.send({ embeds: [messageEmbed] });
+		message.author
+			.send(messageEmbed)
+			.then(() => {
+				if (message.channel.type === 'dm') return;
+				message.reply("I've told you in private about that command.");
+			})
+			.catch(error => {
+				console.error(
+					`Could not send help DM to ${message.author.tag}.\n`,
+					error
+				);
+				message.reply(
+					"it seems like I can't tell you in private! Have you told people to leave you alone?"
+				);
+			});
 	}
 };

@@ -1,11 +1,3 @@
-const {
-	joinVoiceChannel,
-	createAudioPlayer,
-	NoSubscriberBehavior,
-	createAudioResource,
-	AudioPlayerStatus,
-	generateDependencyReport
-} = require('@discordjs/voice');
 const fs = require('fs');
 const path = require('path');
 
@@ -26,5 +18,24 @@ for (const earrape of earrapes) {
 module.exports = {
 	name: 'earrape',
 	description: 'Plays random earrape line.',
-	execute(message, args) {}
+	async execute(message, args) {
+		const VC = message.member.voice.channel;
+
+		if (!VC)
+			return message.reply(
+				'You are not in a place I can scream at you! (Not in voice channel)'
+			);
+
+		// Establish connection and resources.
+		const connection = await VC.join();
+
+		const dispatcher = connection.play(
+			audioFiles[Math.floor(Math.random() * audioFiles.length)]
+		);
+
+		dispatcher.on('finish', () => {
+			dispatcher.destroy();
+			VC.leave();
+		});
+	}
 };

@@ -14,10 +14,10 @@ COPY package*.json ./
 USER node
 
 # Run NPM install on package.json
-RUN npm install --only=production
+RUN pnpm install --only=production
 
 # Copy with appropriate permissions
 COPY --chown=node:node . .
 
 # Run commands
-CMD [ "node", "app.js" ]
+CMD [ "node", "index.js" ]

@@ -1,16 +1,9 @@
 // Import and create client
 const fs = require('fs');
-const { Client, Intents, Collection } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const config = require('./config/config.json');
 
-const client = new Client({
-	intents: [
-		Intents.FLAGS.GUILDS,
-		Intents.FLAGS.GUILD_MESSAGES,
-		Intents.FLAGS.DIRECT_MESSAGES,
-		Intents.FLAGS.DIRECT_MESSAGE_TYPING
-	]
-});
+const client = new Client();
 
 // Configuration
 client.commands = new Collection();
@@ -30,7 +23,7 @@ client.on('ready', () => {
 });
 
 // Text Commands
-client.on('messageCreate', message => {
+client.on('message', message => {
 	// If sent by bot or does not contain prefix exit
 	if (
 		!message.content.toLowerCase().startsWith('horlman') ||
