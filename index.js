@@ -31,6 +31,11 @@ client.on('message', message => {
 	)
 		return;
 
+	// Log commands to console, so that I can check.
+	console.log(
+		`${message.author.tag} used the following command: ${message.content}`
+	);
+
 	let args = message.content.slice(8).split(' ');
 
 	// Make sure that a command has been issued
