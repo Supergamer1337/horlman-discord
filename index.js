@@ -31,11 +31,7 @@ client.on('message', message => {
 	)
 		return;
 
-	// Check for Horlman or Please
-	if (message.content.toLowerCase().startsWith('horlman')) {
-		// Prepare horlman prefix
-		var args = message.content.slice('horlman'.length + 1).split(' ');
-	}
+	let args = message.content.slice(8).split(' ');
 
 	// Make sure that a command has been issued
 	if (args[0] != undefined) {
