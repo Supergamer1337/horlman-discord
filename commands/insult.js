@@ -13,18 +13,23 @@ module.exports = {
 	usage: '[what to insult]',
 	description: 'Well, an insult.',
 	execute(message, args) {
-		if (args[1]) {
+		if (
+			args[1] === '<@!228215503632596993>' ||
+			'SuperGamer1337' ||
+			'supergamer1337'
+		) {
+			message.reply(
+				insults[Math.floor(Math.random() * insults.length)] +
+					' Thats what you get for trying to insult my homie.'
+			);
+		} else if (args[1]) {
 			message.channel.send(
 				args[1] +
 					', ' +
 					insults[Math.floor(Math.random() * insults.length)]
 			);
 		} else {
-			message.reply(
-				message.author.username +
-					', ' +
-					insults[Math.floor(Math.random() * insults.length)]
-			);
+			message.reply(insults[Math.floor(Math.random() * insults.length)]);
 		}
 	}
 };
