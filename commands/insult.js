@@ -15,12 +15,11 @@ module.exports = {
 	execute(message, args) {
 		if (
 			args[1] === '<@!228215503632596993>' ||
-			'SuperGamer1337' ||
-			'supergamer1337'
+			args[1]?.toLowerCase() === 'supergamer1337'
 		) {
 			message.reply(
 				insults[Math.floor(Math.random() * insults.length)] +
-					' Thats what you get for trying to insult my homie.'
+					'\n\nThats what you get for trying to insult my homie.'
 			);
 		} else if (args[1]) {
 			message.channel.send(
